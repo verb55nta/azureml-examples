@@ -38,4 +38,4 @@ jobs:
       scriptLocation: inlineScript
       scriptType: bash
       inlineScript: |
-        az ml model deploy -n myservice3 -m credit_defaults_model:17 -m credit_defaults_model:16 --ic inf.json --dc dep.json --verbose --overwrite
+        az ml model deploy -g $(resource-group) -w $(workspace) -n myservice4 -m credit_defaults_model:17 -m credit_defaults_model:16 --ic inf.json --dc dep.json --verbose --overwrite
