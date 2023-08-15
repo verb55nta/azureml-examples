@@ -16,7 +16,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - checkout: none
+  - checkout: self
   - task: UsePythonVersion@0
     displayName: Use Python >=3.8
     inputs:
@@ -41,7 +41,6 @@ jobs:
         pwd
         ls
         tree .
-        tree /home/vsts/work
         tree /home/vsts/work/1/s
         # submit component job and get the run name
         job_name=$(az ml job create --file single-job-pipeline.yml -g $(resource-group) -w $(workspace) --query name --output tsv)
