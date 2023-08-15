@@ -26,24 +26,16 @@ jobs:
       set -ex
 
       az version
-      az extension add -n ml
+      az extension add -n azure-cli-ml
     displayName: 'Add AzureML Extension'
 
-  - task: AzureCLI@2
+  - task: AzureCLI@1
     name: submit_azureml_job_task
     displayName: Submit AzureML Job Task
     inputs:
       azureSubscription: $(service-connection)
-      workingDirectory: 'cli/jobs/pipelines-with-components/nyc_taxi_data_regression'
+      workingDirectory: 'modeldep_v1'
       scriptLocation: inlineScript
       scriptType: bash
       inlineScript: |
-        pwd
-        ls
-        tree .
-        tree /home/vsts/work/1/s
-        # submit component job and get the run name
-        job_name=$(az ml job create --file pipeline.yml -g $(resource-group) -w $(workspace) --query name --output tsv)
-
-        # Set output variable for next task
-        echo "##vso[task.setvariable variable=JOB_NAME;isOutput=true;]$job_name"
+        az ml model deploy -n myservice3 -m credit_defaults_model:17 -m credit_defaults_model:16 --ic inf.json --dc dep.json --verbose --overwrite
