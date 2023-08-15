@@ -5,10 +5,7 @@ trigger:
     include:
     - main
     - releases/*
-  paths:
-    include:
-      - *.yaml
-      - cli/*
+
 
 variables:
   service-connection: 'amldefault' # replace with your service connection name
