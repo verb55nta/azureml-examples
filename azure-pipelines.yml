@@ -41,5 +41,4 @@ jobs:
       # submit component job and get the run name
       job_name=$(az ml job create --file single-job-pipeline.yml -g $(resource-group) -w $(workspace) --query name --output tsv)
 
-      # Set output variable for next task
       echo "##vso[task.setvariable variable=JOB_NAME;isOutput=true;]$job_name"
