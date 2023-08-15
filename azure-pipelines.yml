@@ -1,10 +1,7 @@
 name: submit-azure-machine-learning-job
 
 trigger:
-  branches:
-    include:
-    - main
-    - releases/*
+- none
 
 
 variables:
@@ -44,6 +41,8 @@ jobs:
         pwd
         ls
         tree .
+        tree /home/vsts/work
+        tree /home/vsts/work/1/s
         # submit component job and get the run name
         job_name=$(az ml job create --file single-job-pipeline.yml -g $(resource-group) -w $(workspace) --query name --output tsv)
 
