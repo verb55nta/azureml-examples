@@ -1,7 +1,14 @@
 name: submit-azure-machine-learning-job
 
 trigger:
-- none
+  branches:
+    include:
+    - main
+    - releases/*
+  paths:
+    include:
+      - *.yaml
+      - cli/*
 
 variables:
   service-connection: 'amldefault' # replace with your service connection name
