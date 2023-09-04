@@ -43,6 +43,6 @@ jobs:
         ls
         tree .
         #tree /home/vsts/work/1/s
-        # submit component job and get the run name
+        # submit component job and get the run name hoge
         python deploy.py
         
