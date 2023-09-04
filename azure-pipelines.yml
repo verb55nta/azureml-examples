@@ -42,8 +42,7 @@ jobs:
         pwd
         ls
         tree .
-        tree /home/vsts/work/1/s
+        #tree /home/vsts/work/1/s
         # submit component job and get the run name
         python deploy.py
-
         
