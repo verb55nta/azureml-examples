@@ -1,7 +1,0 @@
-name: <REGISTRY-NAME>
-tags:
-  foo: bar
-  description: Basic registry with one primary region and to additional regions
-location: <LOCATION>
-replication_locations:
-  - location: <LOCATION>
