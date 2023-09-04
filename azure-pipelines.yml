@@ -26,7 +26,8 @@ jobs:
       set -ex
 
       az version
-      az extension add -n azure-cli-ml
+      az extension add -n ml
+      pip install azure-ai-ml azure-identity      
     displayName: 'Add AzureML Extension'
 
   - task: AzureCLI@1
@@ -34,8 +35,15 @@ jobs:
     displayName: Submit AzureML Job Task
     inputs:
       azureSubscription: $(service-connection)
-      workingDirectory: 'modeldep_v1'
+      workingDirectory: 'sdk/python/endpoints/online/managed'
       scriptLocation: inlineScript
       scriptType: bash
       inlineScript: |
-        az ml model deploy -g $(resource-group) -w $(workspace) -n myservice4 -m credit_defaults_model:17 -m credit_defaults_model:16 --ic inf.json --dc dep.json --verbose --overwrite
+        pwd
+        ls
+        tree .
+        tree /home/vsts/work/1/s
+        # submit component job and get the run name
+        python deploy.py
+
+        
